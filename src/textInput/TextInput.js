@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { View, Platform, StyleSheet, TextInput } from "react-native";
 
-import { Fonts, Colors } from "/config";
+import { Fonts, Colors } from "./config";
 
 class RNSTextInput extends React.Component {
   static propTypes = {

@@ -1,16 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { LinearGradient } from 'expo';
+import React from "react";
+import PropTypes from "prop-types";
+import { LinearGradient } from "expo";
 import {
   Image,
   StyleSheet,
   TouchableOpacity,
   View,
   Text,
-  ActivityIndicator,
-} from 'react-native';
+  ActivityIndicator
+} from "react-native";
 
-import { Colors, Fonts } from '/config';
+import { Colors, Fonts } from "./config";
 
 const borderRadius = 40;
 
@@ -18,7 +18,9 @@ export default function RNSButton(props) {
   const caption = props.caption && props.caption.toUpperCase();
   let icon;
   if (props.icon) {
-    icon = <Image resizeMode="contain" source={props.icon} style={styles.icon} />;
+    icon = (
+      <Image resizeMode="contain" source={props.icon} style={styles.icon} />
+    );
   }
 
   let content;
@@ -29,15 +31,15 @@ export default function RNSButton(props) {
       props.small && styles.buttonSmall,
       styles.border,
       props.primary && {
-        borderColor: Colors.primary,
+        borderColor: Colors.primary
       },
       props.secondary && {
-        borderColor: Colors.secondary,
+        borderColor: Colors.secondary
       },
       props.bgColor && {
-        borderColor: props.bgColor,
+        borderColor: props.bgColor
       },
-      props.rounded && styles.rounded,
+      props.rounded && styles.rounded
     ];
     const textStyle = [
       styles.caption,
@@ -45,46 +47,40 @@ export default function RNSButton(props) {
       styles.secondaryCaption,
       icon && styles.captionWithIcon,
       props.primary && {
-        color: Colors.primary,
+        color: Colors.primary
       },
       props.secondary && {
-        color: Colors.secondary,
+        color: Colors.secondary
       },
       props.bgColor && {
-        color: props.bgColor,
+        color: props.bgColor
       },
       props.textColor && {
-        color: props.textColor,
-      },
+        color: props.textColor
+      }
     ];
 
     content = (
       <View style={borderedStyle}>
-        { icon && (
-          <View>
-            {icon}
-          </View>
+        {icon && <View>{icon}</View>}
+        {props.loading && <ActivityIndicator color="white" />}
+        {!props.loading && props.caption && (
+          <Text style={textStyle}>{caption}</Text>
         )}
-        { props.loading && (
-          <ActivityIndicator color="white" />
-        )}
-        { !props.loading && props.caption && (
-          <Text style={textStyle}>
-            {caption}
-          </Text>
-        )}
-        { props.children && props.children }
+        {props.children && props.children}
       </View>
     );
   } else {
     const isPrimary = props.primary || (!props.primary && !props.secondary);
-    let gradientArray = props.bgGradientStart && props.bgGradientEnd ? [
-      props.bgGradientStart, props.bgGradientEnd,
-    ] : undefined;
+    let gradientArray =
+      props.bgGradientStart && props.bgGradientEnd
+        ? [props.bgGradientStart, props.bgGradientEnd]
+        : undefined;
 
     if (!gradientArray) {
-      gradientArray = isPrimary ? [Colors.primaryGradientStart, Colors.primaryGradientEnd] :
-        [Colors.secondaryGradientStart, Colors.secondaryGradientEnd];
+      gradientArray = isPrimary
+        ? [Colors.primaryGradientStart, Colors.primaryGradientEnd]
+        : [Colors.secondaryGradientStart, Colors.secondaryGradientEnd];
     }
 
     if (props.bgColor) {
@@ -101,30 +97,24 @@ export default function RNSButton(props) {
           props.small && styles.buttonSmall,
           styles.primaryButton,
           props.rounded && { borderRadius },
-          props.action && styles.action,
+          props.action && styles.action
         ]}
       >
-        { icon && (
-          <View>
-            {icon}
-          </View>
-        )}
-        { props.loading && (
-          <ActivityIndicator color="white" />
-        )}
-        { !props.loading && props.caption && (
+        {icon && <View>{icon}</View>}
+        {props.loading && <ActivityIndicator color="white" />}
+        {!props.loading && props.caption && (
           <Text
             style={[
               styles.caption,
               props.small && styles.captionSmall,
               icon && styles.captionWithIcon,
-              styles.primaryCaption,
+              styles.primaryCaption
             ]}
           >
             {caption}
           </Text>
         )}
-        { !props.loading && props.children && props.children }
+        {!props.loading && props.children && props.children}
       </LinearGradient>
     );
   }
@@ -138,7 +128,7 @@ export default function RNSButton(props) {
         styles.container,
         props.small && styles.containerSmall,
         props.large && styles.containerLarge,
-        props.style,
+        props.style
       ]}
     >
       {content}
@@ -158,7 +148,7 @@ RNSButton.propTypes = {
   style: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.arrayOf(PropTypes.any),
-    PropTypes.shape({}),
+    PropTypes.shape({})
   ]),
   children: PropTypes.element,
   bgColor: PropTypes.string,
@@ -166,7 +156,7 @@ RNSButton.propTypes = {
   bgGradientStart: PropTypes.string,
   bgGradientEnd: PropTypes.string,
   action: PropTypes.bool,
-  loading: PropTypes.bool,
+  loading: PropTypes.bool
 };
 
 const HEIGHT = 40;
@@ -175,66 +165,66 @@ const HEIGHT_LARGE = 50;
 
 const styles = StyleSheet.create({
   container: {
-    height: HEIGHT,
+    height: HEIGHT
     // borderWidth: 1 / PixelRatio.get(),
   },
   containerSmall: {
-    height: HEIGHT_SMALL,
+    height: HEIGHT_SMALL
   },
   containerLarge: {
-    height: HEIGHT_LARGE,
+    height: HEIGHT_LARGE
   },
   button: {
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 30,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 30
   },
   buttonSmall: {
-    paddingHorizontal: 20,
+    paddingHorizontal: 20
   },
   border: {
     borderWidth: 1,
-    borderColor: 'white',
-    borderRadius: 5,
+    borderColor: "white",
+    borderRadius: 5
   },
   primaryButton: {
-    backgroundColor: 'transparent',
-    borderRadius: 5,
+    backgroundColor: "transparent",
+    borderRadius: 5
   },
   rounded: {
-    borderRadius: HEIGHT_LARGE / 2,
+    borderRadius: HEIGHT_LARGE / 2
   },
   icon: {
     maxHeight: HEIGHT - 20,
-    maxWidth: HEIGHT - 20,
+    maxWidth: HEIGHT - 20
   },
   caption: {
     letterSpacing: 1,
     fontSize: 15,
-    fontFamily: Fonts.primaryBold,
+    fontFamily: Fonts.primaryBold
   },
   captionSmall: {
     fontSize: 12,
-    fontWeight: '500',
+    fontWeight: "500"
   },
   captionWithIcon: {
-    marginLeft: 12,
+    marginLeft: 12
   },
   primaryCaption: {
-    color: 'white',
+    color: "white"
   },
   secondaryCaption: {
-    color: 'white',
-    backgroundColor: 'transparent',
+    color: "white",
+    backgroundColor: "transparent"
   },
   action: {
     borderRadius: 20,
     height: HEIGHT,
     width: HEIGHT,
     paddingHorizontal: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    alignItems: "center",
+    justifyContent: "center"
+  }
 });

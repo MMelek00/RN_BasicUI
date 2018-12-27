@@ -5,7 +5,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 
 import { View, Text } from "react-native";
 
-import { Colors } from "/config";
+import { Colors } from "./config";
 
 class RNSDropDown extends React.Component {
   static propTypes = {

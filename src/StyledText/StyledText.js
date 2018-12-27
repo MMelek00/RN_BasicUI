@@ -1,7 +1,7 @@
 import React from "react";
 import { Text as RNText, StyleSheet } from "react-native";
 
-import { Colors, Fonts } from "/config";
+import { Colors, Fonts } from "./config";
 
 function applyGeneralStyles(props) {
   return [

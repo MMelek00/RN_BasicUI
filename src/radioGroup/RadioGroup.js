@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import { TouchableOpacity, View, Text } from "react-native";
 
-import { Colors } from "/config";
+import { Colors } from "./config";
 
 export default function RNSRadioGroup({
   items,
