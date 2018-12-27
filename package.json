@@ -1,0 +1,27 @@
+{
+  "name": "RN_BasicUI",
+  "version": "0.0.1",
+  "description": "ui library for react native.",
+  "main": "src/index.js",
+  "keywords": [
+    "UI",
+    "reactnative",
+    "react-native"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MMelek00/RN_BasicUI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MMelek00/RN_BasicUI.git/issues"
+  },
+  "homepage": "https://github.com/MMelek00/RN_BasicUI.git#readme",
+  "author": "Melek  Mliki",
+  "license": "MIT",
+  "dependencies": {
+    "expo": "^31.0.6",
+    "react-native": "^0.57.2",
+    "react-native-modal-dropdown": "^0.6.2",
+    "react-native-vector-icons": "^6.1.0"
+  }
+}
